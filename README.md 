@@ -1,0 +1,18 @@
+# Guess Number Game
+
+This is a simple number guessing game written in Python.
+
+The program randomly chooses a number between 1 and 100.
+The player has a limited number of attempts to guess the correct number.
+
+## How to Run
+
+1. Make sure you have Python installed
+2. Open the folder in PyCharm
+3. Run `main.py`
+
+## How to Play
+
+- Enter a number when prompted
+- The game will tell you if the guess is too high or too low
+- The game ends when you guess correctly or run out of attempts

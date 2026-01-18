@@ -1,0 +1,26 @@
+# Testing
+
+The game was tested manually by running the program multiple times.
+
+## Test Cases
+
+| Test | What was tested | Result |
+|------|----------------|--------|
+| 1 | Normal number input | Worked correctly |
+| 2 | Correct guess | Game showed win message |
+| 3 | Letters instead of numbers | Error message shown |
+| 4 | Very large number | Counted as an attempt |
+| 5 | Using all attempts | Game over message |
+
+## Bug Found
+
+At first, the program tried to convert any input into a number, which caused an error when letters were entered.
+
+## Bug Fix
+
+A check was added to make sure the input is a valid number before converting it.
+
+## Notes
+
+After fixing the bug, the game works as expected.
+
