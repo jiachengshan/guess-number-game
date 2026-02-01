@@ -1,31 +1,37 @@
-from game import GuessNumberGame
+from game import WordGuessGame
+
+
+def load_words():
+    # 可以随便加词，老师会很喜欢这个“可扩展”
+    return [
+        "apple", "grape", "peach", "lemon", "mango",
+        "berry", "melon", "cherry", "olive", "plums"
+    ]
 
 
 def main():
-    print("🎮 Welcome to Guess the Number!")
-    print("I'm thinking of a number between 1 and 100.")
-    print("You have 7 attempts.\n")
+    print("🎮 Welcome to WORD DUEL!")
+    print("Two players take turns guessing each other's secret word.")
+    print("🟩 correct letter & position | 🟨 correct letter | ⬜ not in word\n")
 
-    game = GuessNumberGame()
+    words = load_words()
+    game = WordGuessGame(words)
 
-    while not game.is_over and game.has_attempts_left():
-        user_input = input("Enter your guess: ")
+    while not game.game_over:
+        player = game.current_player
+        attempts = game.attempts_left[player]
 
-        if not user_input.isdigit():
-            print("❌ Please enter a valid number.\n")
+        print(f"\n🔁 {player}'s turn | Attempts left: {attempts}")
+        guess = input("Enter a 5-letter word: ").lower().strip()
+
+        if len(guess) != 5 or not guess.isalpha():
+            print("❌ Invalid input. Please enter a 5-letter word.")
             continue
 
-        guess = int(user_input)
-        result = game.make_guess(guess)
+        status, message = game.make_guess(guess)
+        print(message)
 
-        if result == "correct":
-            print(f"🎉 You win! The number was {game.secret_number}.")
-        else:
-            print(f"➡️ Your guess is {result}.")
-            print(f"Attempts left: {game.max_attempts - game.attempts}\n")
-
-    if not game.is_over:
-        print(f"💀 Game over! The number was {game.secret_number}.")
+    print("\n🏁 Game Over. Thanks for playing!")
 
 
 if __name__ == "__main__":
